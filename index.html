@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Monitoring IoT</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+<body class="bg-[#141414] min-h-screen">
+    <div class="max-w-4xl mx-auto mt-10 bg-[#181818] rounded-xl shadow-lg p-8">
+        <div class="flex flex-col items-center mb-6 bg-[#232323] rounded-lg p-4 shadow">
+            <div class="flex gap-4">
+                <div class="font-semibold text-red-600">Nama:</div>
+                <div class="text-white">Andreas Damar Saputra</div>
+            </div>
+            <div class="flex gap-4">
+                <div class="font-semibold text-red-600">NIM:</div>
+                <div class="text-white">G.231.22.0155</div>
+            </div>
+        </div>
+        <h1 class="text-3xl font-bold text-center text-white mb-6 tracking-wide">Monitoring IoT Suhu & Kelembaban</h1>
+        <div class="flex justify-center items-center gap-4 mb-6">
+            <span class="font-semibold text-gray-300">Status MQTT:</span>
+            <span id="status" class="font-bold text-lg text-red-500">-</span>
+        </div>
+        <div class="flex justify-around mb-8 gap-4">
+            <div class="bg-[#232323] rounded-lg p-6 text-center shadow w-1/2 border-2 border-[#333]">
+                <div class="text-lg font-semibold text-red-500">Suhu</div>
+                <span class="block text-4xl font-bold text-white mt-2" id="suhu">-</span>
+                <span class="text-red-500 text-lg">°C</span>
+            </div>
+            <div class="bg-[#232323] rounded-lg p-6 text-center shadow w-1/2 border-2 border-[#333]">
+                <div class="text-lg font-semibold text-red-500">Kelembaban</div>
+                <span class="block text-4xl font-bold text-white mt-2" id="kelembaban">-</span>
+                <span class="text-red-500 text-lg">%</span>
+            </div>
+        </div>
+        <div class="flex flex-row flex-nowrap gap-8 justify-center overflow-x-auto">
+            <div class="bg-[#232323] rounded-lg shadow p-4 w-[440px] min-w-[340px] border-2 border-[#333]">
+                <h3 class="text-xl font-semibold text-red-500 mb-2 text-center">Grafik Suhu</h3>
+                <canvas id="suhuChart" width="400" height="200"></canvas>
+            </div>
+            <div class="bg-[#232323] rounded-lg shadow p-4 w-[440px] min-w-[340px] border-2 border-[#333]">
+                <h3 class="text-xl font-semibold text-red-500 mb-2 text-center">Grafik Kelembaban</h3>
+                <canvas id="kelembabanChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+        <div class="flex flex-col items-center mt-8 mb-4">
+            <div class="text-lg font-semibold text-red-500 mb-2 tracking-wide">Kontrol Lampu</div>
+            <div class="flex gap-8">
+                <!-- Switch D6 -->
+                <div class="flex flex-col items-center">
+                    <span class="mb-1 text-red-500 font-medium">D6</span>
+                    <button id="switch-d6" type="button"
+                        class="w-14 h-8 rounded-full bg-gray-700 relative transition-colors duration-200 focus:outline-none border-2 border-[#333]"
+                        aria-pressed="false"
+                        onclick="toggleLamp('d6')">
+                        <span id="knob-d6"
+                            class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow transition-transform duration-200"></span>
+                    </button>
+                    <span id="label-d6" class="mt-1 text-xs text-gray-300">OFF</span>
+                </div>
+                <!-- Switch D7 -->
+                <div class="flex flex-col items-center">
+                    <span class="mb-1 text-red-500 font-medium">D7</span>
+                    <button id="switch-d7" type="button"
+                        class="w-14 h-8 rounded-full bg-gray-700 relative transition-colors duration-200 focus:outline-none border-2 border-[#333]"
+                        aria-pressed="false"
+                        onclick="toggleLamp('d7')">
+                        <span id="knob-d7"
+                            class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow transition-transform duration-200"></span>
+                    </button>
+                    <span id="label-d7" class="mt-1 text-xs text-gray-300">OFF</span>
+                </div>
+                <!-- Switch D8 -->
+                <div class="flex flex-col items-center">
+                    <span class="mb-1 text-red-500 font-medium">D8</span>
+                    <button id="switch-d8" type="button"
+                        class="w-14 h-8 rounded-full bg-gray-700 relative transition-colors duration-200 focus:outline-none border-2 border-[#333]"
+                        aria-pressed="false"
+                        onclick="toggleLamp('d8')">
+                        <span id="knob-d8"
+                            class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow transition-transform duration-200"></span>
+                    </button>
+                    <span id="label-d8" class="mt-1 text-xs text-gray-300">OFF</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
