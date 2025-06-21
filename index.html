@@ -46,47 +46,7 @@
                 <canvas id="kelembabanChart" width="400" height="200"></canvas>
             </div>
         </div>
-        <div class="flex flex-col items-center mt-8 mb-4">
-            <div class="text-lg font-semibold text-red-500 mb-2 tracking-wide">Kontrol Lampu</div>
-            <div class="flex gap-8">
-                <!-- Switch D6 -->
-                <div class="flex flex-col items-center">
-                    <span class="mb-1 text-red-500 font-medium">D6</span>
-                    <button id="switch-d6" type="button"
-                        class="w-14 h-8 rounded-full bg-gray-700 relative transition-colors duration-200 focus:outline-none border-2 border-[#333]"
-                        aria-pressed="false"
-                        onclick="toggleLamp('d6')">
-                        <span id="knob-d6"
-                            class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow transition-transform duration-200"></span>
-                    </button>
-                    <span id="label-d6" class="mt-1 text-xs text-gray-300">OFF</span>
-                </div>
-                <!-- Switch D7 -->
-                <div class="flex flex-col items-center">
-                    <span class="mb-1 text-red-500 font-medium">D7</span>
-                    <button id="switch-d7" type="button"
-                        class="w-14 h-8 rounded-full bg-gray-700 relative transition-colors duration-200 focus:outline-none border-2 border-[#333]"
-                        aria-pressed="false"
-                        onclick="toggleLamp('d7')">
-                        <span id="knob-d7"
-                            class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow transition-transform duration-200"></span>
-                    </button>
-                    <span id="label-d7" class="mt-1 text-xs text-gray-300">OFF</span>
-                </div>
-                <!-- Switch D8 -->
-                <div class="flex flex-col items-center">
-                    <span class="mb-1 text-red-500 font-medium">D8</span>
-                    <button id="switch-d8" type="button"
-                        class="w-14 h-8 rounded-full bg-gray-700 relative transition-colors duration-200 focus:outline-none border-2 border-[#333]"
-                        aria-pressed="false"
-                        onclick="toggleLamp('d8')">
-                        <span id="knob-d8"
-                            class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow transition-transform duration-200"></span>
-                    </button>
-                    <span id="label-d8" class="mt-1 text-xs text-gray-300">OFF</span>
-                </div>
-            </div>
-        </div>
+        <!-- Kontrol lampu dihapus dari sini -->
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

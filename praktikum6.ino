@@ -156,10 +156,8 @@ void loop() {
       return;
     }
 
-    // =================================================================
-    // BLOK KODE KONTROL LED OTOMATIS BERDASARKAN SUHU SUDAH DIHAPUS
-    // Sesuai permintaan, sekarang LED hanya bisa dikontrol via MQTT
-    // =================================================================
+    // Kontrol LED berdasarkan suhu
+    controlLEDsByTemperature(t);
 
     // Alokasi memori JSON yang dinamis dan aman
     const int capacity = JSON_OBJECT_SIZE(2);
@@ -197,5 +195,38 @@ void loop() {
     lcd.print("%");
     lcd.setCursor(0, 1);
     lcd.print(statusLembab);
+  }
+}
+
+// ======================= FUNGSI KONTROL LED BERDASARKAN SUHU =======================
+void controlLEDsByTemperature(float temperature) {
+  // Logika kontrol LED berdasarkan suhu
+  if (temperature >= 31) {
+    // Suhu >= 31: Semua LED menyala
+    digitalWrite(LED1_PIN, HIGH);
+    digitalWrite(LED2_PIN, HIGH);
+    digitalWrite(LED3_PIN, HIGH);
+    Serial.println("Suhu >= 31°C: Semua LED menyala");
+  } 
+  else if (temperature >= 30) {
+    // Suhu >= 30: LED 1 dan 2 menyala, LED 3 mati
+    digitalWrite(LED1_PIN, HIGH);
+    digitalWrite(LED2_PIN, HIGH);
+    digitalWrite(LED3_PIN, LOW);
+    Serial.println("Suhu >= 30°C: LED 1 & 2 menyala");
+  } 
+  else if (temperature >= 29) {
+    // Suhu >= 29: LED 1 menyala, LED 2 dan 3 mati
+    digitalWrite(LED1_PIN, HIGH);
+    digitalWrite(LED2_PIN, LOW);
+    digitalWrite(LED3_PIN, LOW);
+    Serial.println("Suhu >= 29°C: LED 1 menyala");
+  } 
+  else {
+    // Suhu < 29: Semua LED mati
+    digitalWrite(LED1_PIN, LOW);
+    digitalWrite(LED2_PIN, LOW);
+    digitalWrite(LED3_PIN, LOW);
+    Serial.println("Suhu < 29°C: Semua LED mati");
   }
 }
