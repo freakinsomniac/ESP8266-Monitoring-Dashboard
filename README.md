@@ -29,7 +29,7 @@
 
 1. Clone repositori ini
 ```bash
-git clone https://github.com/yourusername/iot-monitoring-dashboard.git
+git clone https://github.com/freakinsomniac/iot-monitoring-dashboard.git
 ```
 
 2. Import skema database
@@ -62,13 +62,7 @@ Payload yang dikirim dari sensor harus dalam format JSON:
 { "suhu": 28.5, "kelembaban": 65.2 }
 ```
 
-Payload untuk kontrol LED:
-```
-LED1_ON  // Menyalakan LED pada pin D6
-LED1_OFF // Mematikan LED pada pin D6
-```
-
-## 👤 Developer
+## 👤 Owner
 
 - **Nama:** Andreas Damar Saputra
 - **NIM:** G.231.22.0155
